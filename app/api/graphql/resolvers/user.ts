@@ -35,6 +35,7 @@ export async function loginUser(
 }
 
 export async function createUser(
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   _: any,
   args: {
     name: string;

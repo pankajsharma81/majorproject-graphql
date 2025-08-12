@@ -21,12 +21,42 @@ model User {
   username String   @unique
   password String
   avatar   String?
-  role     RoleType @default(user)
+  role     RoleType @default(staff)
+}
+
+model Product {
+  id          String          @id @default(auto()) @map("_id") @db.ObjectId
+  title       String
+  description String
+  category    ProductCategory @default(others)
+  price       Float
+  stock       Int
+  ImageUrl    String
+  sales       Sale[]
+}
+
+model Sale {
+  id        String   @id @default(auto()) @map("_id") @db.ObjectId
+  productId String   @db.ObjectId
+  product   Product  @relation(fields: [productId], references: [id])
+  quantity  Int      @default(1)
+  createdAt DateTime @default(now())
 }
 
 enum RoleType {
   admin
-  user
-  director
   manager
+  staff
+}
+
+enum ProductCategory {
+  electronics
+  beauty
+  food
+  accessories
+  clothing
+  furniture
+  description
+  decor
+  others
 }
