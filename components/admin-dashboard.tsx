@@ -41,6 +41,7 @@ export default function AdminDashboard() {
       </div>
       <div>
           {products.map((product) => {
+            
             return <ProductCard key={product.id} product={product} />;
           })}
         </div>

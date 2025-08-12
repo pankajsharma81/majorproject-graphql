@@ -20,8 +20,9 @@ export default function AddProductButton() {
   const [imageUrl, setImageUrl] = useState("");
 
   async function handleAddProduct() {
+  
     try {
-      const data: { addProduct: Product } = await gqlClient.request(
+      const data: { addProducts: Product } = await gqlClient.request(
         ADD_PRODUCT,
         {
           title,
@@ -33,7 +34,7 @@ export default function AddProductButton() {
         }
       );
 
-      if (data.addProduct) {
+      if (data.addProducts) {
         alert("product-created");
         // setName("");
         // setPasword("");
@@ -43,7 +44,9 @@ export default function AddProductButton() {
       } else {
         alert("product creation failed");
       }
-    } catch (error) {}
+    } catch (error) {
+      alert("unable to add user Error")
+    }
   }
 
   return (
@@ -131,9 +134,8 @@ export default function AddProductButton() {
               Cancel
             </Button>
           </Dialog.Close>
-          <Dialog.Close>
+
             <Button onClick={handleAddProduct}>Save</Button>
-          </Dialog.Close>
         </Flex>
       </Dialog.Content>
     </Dialog.Root>

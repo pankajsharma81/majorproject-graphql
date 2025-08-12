@@ -10,7 +10,7 @@ import {
   updatedUserRole,
 } from "./resolvers/user";
 import typeDefs from "./typeDefs";
-import { addProducts, getAllProducts } from "./resolvers/products";
+import { addProducts, createSale, getAllProducts, getProduct } from "./resolvers/products";
 
 const resolvers = {
   Query: {
@@ -18,14 +18,16 @@ const resolvers = {
     currentUser: getUserFromCookies,
     getAllUsers,
 
-    getAllProducts
+    getAllProducts,
+    getProduct
   },
   Mutation: {
     createUser,
     updatedUserRole,
     updatedUserProfile,
 
-    addProducts
+    addProducts,
+    createSale,
 
   },
 };

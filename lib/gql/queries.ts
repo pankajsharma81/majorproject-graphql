@@ -31,3 +31,16 @@ query GetAllProducts {
     ImageUrl
   }
 }`
+
+export const GET_PRODUCT = gql`
+query GetProduct($getProductId: String) {
+  getProduct(id: $getProductId) {
+    id
+    title
+    description
+    category
+    price
+    stock
+    ImageUrl
+  }
+}`

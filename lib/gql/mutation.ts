@@ -14,14 +14,13 @@ mutation CreateUser($name: String!, $email: String!, $username: String!, $passwo
 `
 
 export const ADD_PRODUCT=gql`
-mutation Mutation($title: String!, $description: String!, $category: String!, $price: Float!, $stock: Int!, $imageUrl: String!) {
-  addProduct(title: $title, description: $description, category: $category, price: $price, stock: $stock, imageUrl: $imageUrl) {
-    id
-    title
-    description
-    category
-    price
-    stock
-    imageUrl
+mutation AddProducts($title: String!, $description: String!, $category: String!, $price: Float!, $stock: Int!, $imageUrl: String!) {
+  addProducts(title: $title, description: $description, category: $category, price: $price, stock: $stock, ImageUrl: $imageUrl) {
+  title  
   }
+}`
+
+export const CREATE_SALE=gql`
+mutation CreateSale($id: String!, $quantity: Int!) {
+  createSale(id: $id, quantity: $quantity)
 }`

@@ -7,6 +7,10 @@ const typeDefs = gql`
     getAllUsers: [User]
 
     getAllProducts:[Product]
+
+    getProduct(id:String):Product
+
+    getProductSales():[Sales]
   }
 
   type Mutation {
@@ -30,6 +34,8 @@ const typeDefs = gql`
 
     # Product
     addProducts(title:String!,description:String!,category:String!,price:Float!,stock:Int!,ImageUrl:String!):Product
+
+    createSale(id:String!,quantity:Int!):Boolean
   }
   
   type Product {
