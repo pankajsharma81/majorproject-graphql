@@ -12,6 +12,7 @@ const typeDefs = gql`
       email: String!
       username: String!
       password: String!
+      role:String!
     ): User
 
     updatedUserRole(userId: String!, role: String!): Boolean

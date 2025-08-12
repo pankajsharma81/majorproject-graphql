@@ -1,3 +1,6 @@
+import { User } from "@/generated/prisma";
+import { CREATE_USER } from "@/lib/gql/mutation";
+import gqlClient from "@/lib/services/gql";
 import {
   Button,
   Dialog,
@@ -15,8 +18,25 @@ export default function AddUserButton() {
   const [password, setPasword] = useState("");
   const [role, setRole] = useState("staff");
 
-  async function handleAddUser(){
-    
+  async function handleAddUser() {
+    try {
+      const data: { createUser: User } = await gqlClient.request(CREATE_USER, {
+        name,
+        email,
+        username,
+        password,
+        role,
+      });
+
+      if (data.createUser) {
+        alert("user-created");
+        setName("");
+        setPasword("");
+        setEmail("");
+        setUserName("");
+        setRole("staff");
+      }
+    } catch (error) {}
   }
 
   return (
@@ -73,7 +93,7 @@ export default function AddUserButton() {
             />
           </label>
 
-          <Select.Root value={role} onValueChange={(value)=>setRole(value)}>
+          <Select.Root value={role} onValueChange={(value) => setRole(value)}>
             <Select.Trigger />
             <Select.Content>
               <Select.Group>

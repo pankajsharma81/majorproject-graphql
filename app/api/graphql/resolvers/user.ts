@@ -49,6 +49,7 @@ export async function createUser(
     email: string;
     username: string;
     password: string;
+    role:RoleType;
   }
 ) {
   try {
