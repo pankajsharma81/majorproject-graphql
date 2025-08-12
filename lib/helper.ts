@@ -15,11 +15,14 @@ export async function getUserFromCookies() {
       where: {
         id: data?.id,
       },
+      omit: {
+        password: true,
+      },
     });
 
-    if(!user) return null;
-    return user
+    if (!user) return null;
+    return user;
   } catch (error) {
-    return null
+    return null;
   }
 }
