@@ -4,6 +4,7 @@ import { startServerAndCreateNextHandler } from "@as-integrations/next";
 import { NextRequest } from "next/server";
 import {
   createUser,
+  getAllUsers,
   loginUser,
   updatedUserProfile,
   updatedUserRole,
@@ -14,6 +15,7 @@ const resolvers = {
   Query: {
     loginUser,
     currentUser: getUserFromCookies,
+    getAllUsers
   },
   Mutation: {
     createUser,

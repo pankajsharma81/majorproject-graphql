@@ -4,6 +4,7 @@ const typeDefs = gql`
   type Query {
     loginUser(userCred: String!, password: String!): Boolean
     currentUser: User
+    getAllUsers: [User]
   }
 
   type Mutation {

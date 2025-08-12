@@ -5,3 +5,16 @@ export const LOGIN_USER = gql`
     loginUser(userCred: $userCred, password: $password)
   }
 `;
+
+export const GET_ALL_USER = gql`
+  query GetAllUsers {
+    getAllUsers {
+      id
+      name
+      username
+      email
+      avatar
+      role
+    }
+  }
+`;
