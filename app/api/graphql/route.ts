@@ -10,17 +10,23 @@ import {
   updatedUserRole,
 } from "./resolvers/user";
 import typeDefs from "./typeDefs";
+import { addProducts, getAllProducts } from "./resolvers/products";
 
 const resolvers = {
   Query: {
     loginUser,
     currentUser: getUserFromCookies,
-    getAllUsers
+    getAllUsers,
+
+    getAllProducts
   },
   Mutation: {
     createUser,
     updatedUserRole,
     updatedUserProfile,
+
+    addProducts
+
   },
 };
 

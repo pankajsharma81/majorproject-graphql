@@ -18,3 +18,16 @@ export const GET_ALL_USER = gql`
     }
   }
 `;
+
+export const GET_ALL_PRODUCT = gql`
+query GetAllProducts {
+  getAllProducts {
+    id
+    title
+    description
+    category
+    price
+    stock
+    ImageUrl
+  }
+}`

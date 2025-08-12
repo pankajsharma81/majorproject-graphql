@@ -2,11 +2,17 @@
 import { Avatar, Box, Card, Flex, Text } from "@radix-ui/themes";
 import { useContext } from "react";
 import { UserContext } from "./contexts/user-context";
+import Image from "next/image";
 
 export default function Header() {
   const { user } = useContext(UserContext);
   return (
-    <header>
+    <header className="container mx-auto flex justify-between items-center pt-3" >
+      <div>
+        <Image src="/logoipsum-361.svg" alt="logo" height={50} width={50} />
+      </div>
+      <div>
+
       <Box maxWidth="240px">
         <Card>
           <Flex gap="3" align="center">
@@ -27,6 +33,7 @@ export default function Header() {
           </Flex>
         </Card>
       </Box>
+              </div>
     </header>
   );
 }

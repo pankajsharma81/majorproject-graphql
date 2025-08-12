@@ -12,3 +12,16 @@ mutation CreateUser($name: String!, $email: String!, $username: String!, $passwo
   }
 }
 `
+
+export const ADD_PRODUCT=gql`
+mutation Mutation($title: String!, $description: String!, $category: String!, $price: Float!, $stock: Int!, $imageUrl: String!) {
+  addProduct(title: $title, description: $description, category: $category, price: $price, stock: $stock, imageUrl: $imageUrl) {
+    id
+    title
+    description
+    category
+    price
+    stock
+    imageUrl
+  }
+}`
