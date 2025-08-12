@@ -1,5 +1,5 @@
-import { verifyToken } from "@/services/jwt";
-import prismaClient from "@/services/prisma";
+import { verifyToken } from "@/lib/services/jwt";
+import prismaClient from "@/lib/services/prisma";
 import { cookies } from "next/headers";
 
 export async function getUserFromCookies() {

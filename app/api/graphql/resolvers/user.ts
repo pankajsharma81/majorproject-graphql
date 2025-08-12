@@ -1,5 +1,5 @@
-import prismaClient from "@/services/prisma";
-import { generateToken } from "@/services/jwt";
+import prismaClient from "@/lib/services/prisma";
+import { generateToken } from "@/lib/services/jwt";
 import { cookies } from "next/headers";
 import { getUserFromCookies } from "@/lib/helper";
 import { RoleType } from "@/generated/prisma";
@@ -13,9 +13,16 @@ export async function loginUser(
 ) {
   try {
     const cookieStore = await cookies();
-    const user = await prismaClient.user.findUnique({
+    const user = await prismaClient.user.findFirst({
       where: {
-        email: args.userCred,
+        OR: [
+          {
+            email: args.userCred,
+          },
+          {
+            username: args.userCred,
+          },
+        ],
       },
     });
 
@@ -46,15 +53,15 @@ export async function createUser(
 ) {
   try {
     const user = await getUserFromCookies();
-    console.log("line 48")
+
     if (!user) return null;
-    console.log("line 50")
+
     if (user.role != "admin") return null;
-    console.log("line 52")
+
     const createdUser = await prismaClient.user.create({
       data: args,
     });
-    console.log("line 56")
+    console.log("line 56");
     return createdUser;
   } catch (error) {
     return null;
@@ -106,7 +113,7 @@ export async function updatedUserProfile(
     const user = await getUserFromCookies();
 
     if (user?.role != "admin" && user?.id != args.userId) return false;
-    
+
     await prismaClient.user.update({
       where: {
         id: args.userId,
