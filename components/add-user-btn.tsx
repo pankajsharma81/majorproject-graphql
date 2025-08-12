@@ -15,6 +15,10 @@ export default function AddUserButton() {
   const [password, setPasword] = useState("");
   const [role, setRole] = useState("staff");
 
+  async function handleAddUser(){
+    
+  }
+
   return (
     <Dialog.Root>
       <Dialog.Trigger>
@@ -88,7 +92,7 @@ export default function AddUserButton() {
             </Button>
           </Dialog.Close>
           <Dialog.Close>
-            <Button>Save</Button>
+            <Button onClick={handleAddUser}>Save</Button>
           </Dialog.Close>
         </Flex>
       </Dialog.Content>
